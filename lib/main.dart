@@ -28,8 +28,15 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
 
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        appBarTheme: AppBarTheme(
+          backgroundColor: Colors.indigoAccent
+
+        ),
+
         useMaterial3: true,
+
       ),
+      themeMode: ThemeMode.dark,
       home: const ScreenDashboard(),
     );
   }

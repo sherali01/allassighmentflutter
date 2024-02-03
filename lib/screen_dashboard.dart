@@ -45,8 +45,7 @@ class _ScreenDashboardState extends State<ScreenDashboard> {
               icon: Icon(Icons.api),
               label: Text('API Dashboard'),
               style: ElevatedButton.styleFrom(
-                primary: Colors.deepOrange,
-                onPrimary: Colors.white,
+                foregroundColor: Colors.white, backgroundColor: Colors.deepOrange,
               ),
             ),
             ElevatedButton.icon(
@@ -56,8 +55,7 @@ class _ScreenDashboardState extends State<ScreenDashboard> {
               icon: Icon(Icons.data_usage),
               label: Text('SQflite Dashboard'),
               style: ElevatedButton.styleFrom(
-                primary: Colors.deepOrange,
-                onPrimary: Colors.white,
+                foregroundColor: Colors.white, backgroundColor: Colors.deepOrange,
               ),
             ),
             ElevatedButton.icon(
@@ -67,8 +65,7 @@ class _ScreenDashboardState extends State<ScreenDashboard> {
               icon: Icon(Icons.storage),
               label: Text('HIVE Dashboard'),
               style: ElevatedButton.styleFrom(
-                primary: Colors.deepOrange,
-                onPrimary: Colors.white,
+                foregroundColor: Colors.white, backgroundColor: Colors.deepOrange,
               ),
             ),
           ],

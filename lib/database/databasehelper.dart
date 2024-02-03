@@ -1,10 +1,9 @@
 // ignore_for_file: depend_on_referenced_packages
 
-import 'dart:io' as io;
 import 'package:path/path.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:sqflite/sqflite.dart';
-import 'package:sqflite_common_ffi/sqflite_ffi.dart';
+
 
 import 'notes.dart';
 
@@ -22,9 +21,9 @@ class DBHelper {
 
 
   initDatabase() async {
-    sqfliteFfiInit();
-    databaseFactory =databaseFactoryFfi;
-    io.Directory documentDirectory = await getApplicationDocumentsDirectory();
+    // sqfliteFfiInit();
+    // databaseFactory = databaseFactoryFfi;
+    var documentDirectory = await getApplicationDocumentsDirectory();
     String path = join(documentDirectory.path, 'notes.db');
     var db = await openDatabase(path, version: 1, onCreate: _onCreate);
     return db;
@@ -33,7 +32,7 @@ class DBHelper {
   _onCreate(Database db, int version) async {
     await db.execute(
       '''
-      CREATE TABLE notes (id INTEGER PRIMARY KEY AUTOINCREMENT, title TEXT NOT NULL,age INTEGER NOT NULL, description TEXT NOT NULL, email TEXT)
+      CREATE TABLE notes (id INTEGER PRIMARY KEY AUTOINCREMENT, title TEXT NOT NULL,age INTEGER NOT NULL, description TEXT NOT NULL, email TEXT NOT null)
       ''',
     );
   }
@@ -49,8 +48,7 @@ class DBHelper {
   Future<List<NotesModel>> getNotesList() async {
     var dbClient = await db;
 
-    final List<Map<String, Object?>> queryResult = await dbClient!.query(
-        'notes');
+    final List<Map<String, Object?>> queryResult = await dbClient!.query('notes');
     return queryResult.map((e) => NotesModel.fromMap(e)).toList();
   }
 
